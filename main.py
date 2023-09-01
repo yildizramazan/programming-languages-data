@@ -104,3 +104,18 @@ print(reshaped_df.count())
 
 #Dealing with NaN Values ( .fillna() )
 reshaped_df.fillna(0, inplace=True)  #first argument (which is 0 in this piece of code) is what you want to substitute for each NaN value and the inplace determines whether if the DateFrame is going to be updated.
+
+##################################
+#Data Visualisation with Matplotlib
+import matplotlib.pyplot as plt
+plt.figure(figsize=(16,10)) #allows us to resize our chart
+plt.xticks(fontsize=14) #configures our x-axis
+plt.yticks(fontsize=14) #configures our y-axis
+plt.xlabel('Date', fontsize=14)
+plt.ylabel('Number of Posts', fontsize=14)
+plt.ylim(0, 35000)
+
+for column in reshaped_df.columns:
+    plt.plot(reshaped_df.index, reshaped_df[column], label=reshaped_df[column].name)
+plt.legend(fontsize=16)
+plt.show()
